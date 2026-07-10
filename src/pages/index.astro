@@ -1,11 +1,21 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Welcome from "../components/Welcome.astro";
+import Layout from "../layouts/Layout.astro";
+
+import MainLayout from "../layouts/MainLayout.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+	<MainLayout title="Inicio" description="Bienvenido a Whole Wavelength">
+		<section>
+			<h1 class="text-4xl font-bold">Bienvenido 👋</h1>
+
+			<p class="mt-4 text-slate-600">
+				Este será nuestro blog construido con Astro.
+			</p>
+		</section>
+	</MainLayout>
 </Layout>
