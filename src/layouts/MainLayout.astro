@@ -3,23 +3,38 @@ import "../styles/global.css";
 
 import Navbar from "../components/layout/Navbar.astro";
 import Footer from "../components/layout/Footer.astro";
+import { siteConfig } from "../config/site";
 
 interface Props {
     title?: string;
     description?: string;
 }
 
-const { title = "Mi Blog", description = "Blog de programación" } = Astro.props;
+const {
+    title = siteConfig.title,
+    description = siteConfig.description,
+} = Astro.props;
+
+const pageTitle =
+    title === siteConfig.title
+        ? title
+        : `${title} | ${siteConfig.name}`;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={siteConfig.locale.split("-")[0]}>
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
+
         <meta name="description" content={description} />
 
-        <title>{title}</title>
+        <meta name="author" content={siteConfig.author} />
+
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" href="/favicon.ico" />
+
+        <title>{pageTitle}</title>
     </head>
 
     <body class="min-h-screen bg-slate-50 text-slate-900">
