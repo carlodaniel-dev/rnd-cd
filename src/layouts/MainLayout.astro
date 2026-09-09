@@ -10,15 +10,11 @@ interface Props {
     description?: string;
 }
 
-const {
-    title = siteConfig.title,
-    description = siteConfig.description,
-} = Astro.props;
+const { title = siteConfig.title, description = siteConfig.description } =
+    Astro.props;
 
 const pageTitle =
-    title === siteConfig.title
-        ? title
-        : `${title} | ${siteConfig.name}`;
+    title === siteConfig.title ? title : `${title} | ${siteConfig.name}`;
 ---
 
 <!doctype html>
@@ -28,7 +24,6 @@ const pageTitle =
         <meta name="viewport" content="width=device-width" />
 
         <meta name="description" content={description} />
-
         <meta name="author" content={siteConfig.author} />
 
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -37,7 +32,7 @@ const pageTitle =
         <title>{pageTitle}</title>
     </head>
 
-    <body class="min-h-screen bg-slate-50 text-slate-900">
+    <body class="min-h-screen">
         <Navbar />
 
         <main class="mx-auto min-h-[calc(100vh-8rem)] max-w-6xl px-6 py-10">
