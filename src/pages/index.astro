@@ -1,19 +1,226 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import { siteConfig } from "../config/site";
 ---
 
-<MainLayout
-    title="Inicio | Mi Blog"
-    description="Blog de programación y tecnología."
->
-    <section>
-        <h1 class="text-4xl font-bold">
-            Bienvenido a mi blog
-        </h1>
+<MainLayout title={siteConfig.title} description={siteConfig.description}>
+    <div class="space-y-32 py-16 sm:py-24">
+        <!-- Hero -->
+        <section
+            class="flex min-h-[calc(100vh-18rem)] items-center"
+            aria-labelledby="hero-title"
+        >
+            <div class="max-w-4xl">
+                <p
+                    class="mb-6 text-sm font-medium uppercase tracking-[0.18em]"
+                    style="color: var(--color-primary);"
+                >
+                    Carlos Daniel
+                </p>
 
-        <p class="mt-4 text-slate-600">
-            Un espacio donde compartiré contenido sobre programación,
-            tecnología y desarrollo de software.
-        </p>
-    </section>
+                <h1
+                    id="hero-title"
+                    class="max-w-4xl text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl"
+                    style="color: var(--color-text);"
+                >
+                    Desarrollador que aprende, 
+                    <span style="color: var(--color-text-muted);">
+                        reflexiona y comparte.
+                    </span>
+                </h1>
+
+                <p
+                    class="mt-8 max-w-2xl text-lg leading-8 sm:text-xl"
+                    style="color: var(--color-text-muted);"
+                >
+                    Un espacio personal donde escribo sobre programación,
+                    desarrollo web, tecnología y todo aquello que voy
+                    aprendiendo en el camino.
+                </p>
+
+                <div class="mt-10 flex flex-wrap items-center gap-4">
+                    <a
+                        href="/blog"
+                        class="rounded-lg px-5 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90"
+                        style="background-color: var(--color-primary);"
+                    >
+                        Explorar artículos
+                    </a>
+
+                    <a
+                        href="/about"
+                        class="rounded-lg border px-5 py-3 text-sm font-medium transition-colors hover:bg-slate-100"
+                        style="border-color: var(--color-border); color: var(--color-text);"
+                    >
+                        Sobre mí
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Introducción -->
+        <section
+            class="border-y py-16 sm:py-20"
+            style="border-color: var(--color-border);"
+            aria-labelledby="about-preview-title"
+        >
+            <div class="grid gap-10 md:grid-cols-[1fr_2fr] md:gap-16">
+                <div>
+                    <p
+                        class="text-sm font-medium uppercase tracking-[0.15em]"
+                        style="color: var(--color-primary);"
+                    >
+                        Sobre este espacio
+                    </p>
+                </div>
+
+                <div>
+                    <h2
+                        id="about-preview-title"
+                        class="text-2xl font-semibold tracking-tight sm:text-3xl"
+                        style="color: var(--color-text);"
+                    >
+                        Aprender también es compartir.
+                    </h2>
+
+                    <p
+                        class="mt-5 max-w-2xl text-base leading-7"
+                        style="color: var(--color-text-muted);"
+                    >
+                        Este blog nace como un espacio para documentar mi
+                        aprendizaje, explorar nuevas ideas y compartir aquello
+                        que considero útil dentro del mundo de la tecnología.
+                    </p>
+
+                    <p
+                        class="mt-4 max-w-2xl text-base leading-7"
+                        style="color: var(--color-text-muted);"
+                    >
+                        No busco tener todas las respuestas. Busco entender
+                        mejor las cosas, escribir sobre ellas y seguir creciendo
+                        como desarrollador.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Temas -->
+        <section aria-labelledby="topics-title">
+            <div class="mb-10">
+                <p
+                    class="text-sm font-medium uppercase tracking-[0.15em]"
+                    style="color: var(--color-primary);"
+                >
+                    Contenido
+                </p>
+
+                <h2
+                    id="topics-title"
+                    class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl"
+                    style="color: var(--color-text);"
+                >
+                    Temas que encontrarás aquí
+                </h2>
+            </div>
+
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                <article
+                    class="rounded-xl border p-6 transition-transform hover:-translate-y-0.5"
+                    style="border-color: var(--color-border); background-color: var(--color-surface);"
+                >
+                    <h3 class="font-semibold" style="color: var(--color-text);">
+                        Programación
+                    </h3>
+
+                    <p
+                        class="mt-3 text-sm leading-6"
+                        style="color: var(--color-text-muted);"
+                    >
+                        Conceptos, herramientas y aprendizajes relacionados con
+                        el desarrollo de software.
+                    </p>
+                </article>
+
+                <article
+                    class="rounded-xl border p-6 transition-transform hover:-translate-y-0.5"
+                    style="border-color: var(--color-border); background-color: var(--color-surface);"
+                >
+                    <h3 class="font-semibold" style="color: var(--color-text);">
+                        Desarrollo web
+                    </h3>
+
+                    <p
+                        class="mt-3 text-sm leading-6"
+                        style="color: var(--color-text-muted);"
+                    >
+                        Tecnologías, buenas prácticas y experiencias
+                        construyendo para la web.
+                    </p>
+                </article>
+
+                <article
+                    class="rounded-xl border p-6 transition-transform hover:-translate-y-0.5"
+                    style="border-color: var(--color-border); background-color: var(--color-surface);"
+                >
+                    <h3 class="font-semibold" style="color: var(--color-text);">
+                        Aprendizaje
+                    </h3>
+
+                    <p
+                        class="mt-3 text-sm leading-6"
+                        style="color: var(--color-text-muted);"
+                    >
+                        Reflexiones, experiencias y lecciones aprendidas durante
+                        mi crecimiento profesional.
+                    </p>
+                </article>
+
+                <article
+                    class="rounded-xl border p-6 transition-transform hover:-translate-y-0.5"
+                    style="border-color: var(--color-border); background-color: var(--color-surface);"
+                >
+                    <h3 class="font-semibold" style="color: var(--color-text);">
+                        Tecnología
+                    </h3>
+
+                    <p
+                        class="mt-3 text-sm leading-6"
+                        style="color: var(--color-text-muted);"
+                    >
+                        Ideas, herramientas y temas que despiertan mi curiosidad
+                        dentro del mundo tecnológico.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section
+            class="border-t pt-16 text-center sm:pt-20"
+            style="border-color: var(--color-border);"
+        >
+            <h2
+                class="text-2xl font-semibold tracking-tight sm:text-3xl"
+                style="color: var(--color-text);"
+            >
+                ¿Quieres leer lo que estoy aprendiendo?
+            </h2>
+
+            <p
+                class="mx-auto mt-4 max-w-xl text-base leading-7"
+                style="color: var(--color-text-muted);"
+            >
+                Explora los artículos y acompáñame en este proceso de
+                aprendizaje continuo.
+            </p>
+
+            <a
+                href="/blog"
+                class="mt-8 inline-flex rounded-lg px-5 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90"
+                style="background-color: var(--color-primary);"
+            >
+                Ver artículos
+            </a>
+        </section>
+    </div>
 </MainLayout>

@@ -2,13 +2,18 @@
 import { siteConfig } from "../../config/site";
 ---
 
-<footer class="border-t border-slate-200 bg-white">
+<footer
+    class="border-t"
+    style="border-color: var(--color-border); background-color: var(--color-surface);"
+>
     <div
-        class="mx-auto flex min-h-16 max-w-6xl items-center justify-center px-6 py-6 text-center text-sm text-slate-500"
+        class="mx-auto flex min-h-20 max-w-6xl flex-col items-center justify-center gap-2 px-6 py-6 text-center"
     >
-        <p>
+        <p class="text-sm" style="color: var(--color-text-muted);">
             © {new Date().getFullYear()}
-            {siteConfig.name}. Todosss los derechos reservados.
+            {siteConfig.name}
         </p>
+
+        <p class="text-xs" style="color: var(--color-text-muted);"></p>
     </div>
 </footer>
