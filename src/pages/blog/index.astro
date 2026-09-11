@@ -1,0 +1,80 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import { getCollection } from "astro:content";
+import { siteConfig } from "../../config/site";
+
+const posts = await getCollection("blog", ({ data }) => !data.draft);
+---
+
+<MainLayout
+    title="Blog"
+    description="Artículos sobre programación, desarrollo web, aprendizaje y tecnología."
+>
+    <section class="py-16 sm:py-24">
+        <div class="mb-12">
+            <p
+                class="text-sm font-medium uppercase tracking-[0.15em]"
+                style="color: var(--color-primary);"
+            >
+                Blog
+            </p>
+
+            <h1
+                class="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl"
+                style="color: var(--color-text);"
+            >
+                Artículos
+            </h1>
+
+            <p
+                class="mt-5 max-w-2xl text-lg leading-8"
+                style="color: var(--color-text-muted);"
+            >
+                Ideas, aprendizajes y experiencias sobre programación,
+                desarrollo web y tecnología.
+            </p>
+        </div>
+
+        <!-- <p style="color: red;">
+            Artículos encontrados: {posts.length}
+        </p> -->
+
+        <div class="space-y-6">
+            {
+                posts.map((post) => (
+                    <article
+                        class="rounded-xl border p-6"
+                        style="border-color: var(--color-border); background-color: var(--color-surface);"
+                    >
+                        <p class="text-sm" style="color: var(--color-primary);">
+                            {post.data.category}
+                        </p>
+
+                        <h2
+                            class="mt-2 text-2xl font-semibold tracking-tight"
+                            style="color: var(--color-text);"
+                        >
+                            {post.data.title}
+                        </h2>
+
+                        <p
+                            class="mt-3 leading-7"
+                            style="color: var(--color-text-muted);"
+                        >
+                            {post.data.description}
+                        </p>
+
+                        <p
+                            class="mt-4 text-sm"
+                            style="color: var(--color-text-muted);"
+                        >
+                            {post.data.pubDate.toLocaleDateString(
+                                siteConfig.locale,
+                            )}
+                        </p>
+                    </article>
+                ))
+            }
+        </div>
+    </section>
+</MainLayout>
