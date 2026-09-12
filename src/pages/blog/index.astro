@@ -50,11 +50,14 @@ const posts = await getCollection("blog", ({ data }) => !data.draft);
                             {post.data.category}
                         </p>
 
-                        <h2
-                            class="mt-2 text-2xl font-semibold tracking-tight"
-                            style="color: var(--color-text);"
-                        >
-                            {post.data.title}
+                        <h2 class="mt-2 text-2xl font-semibold tracking-tight">
+                            <a
+                                href={`/blog/${post.id}`}
+                                class="transition-opacity hover:opacity-70"
+                                style="color: var(--color-text);"
+                            >
+                                {post.data.title}
+                            </a>
                         </h2>
 
                         <p
@@ -72,6 +75,13 @@ const posts = await getCollection("blog", ({ data }) => !data.draft);
                                 siteConfig.locale,
                             )}
                         </p>
+                        <a
+    href={`/blog/${post.id}`}
+    class="mt-5 inline-flex text-sm font-medium transition-opacity hover:opacity-70"
+    style="color: var(--color-primary);"
+>
+    Leer artículo →
+</a>
                     </article>
                 ))
             }
