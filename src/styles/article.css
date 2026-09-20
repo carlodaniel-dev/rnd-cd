@@ -1,0 +1,111 @@
+.article-content {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    line-height: 1.9;
+}
+
+.article-content p {
+    margin-top: 1.5rem;
+}
+
+.article-content h2 {
+    margin-top: 3.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+}
+
+.article-content h3 {
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+    font-size: 1.35rem;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.015em;
+}
+
+.article-content a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: opacity 0.2s ease;
+}
+
+.article-content a:hover {
+    opacity: 0.7;
+}
+
+.article-content ul,
+.article-content ol {
+    margin-top: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.article-content ul {
+    list-style-type: disc;
+}
+
+.article-content ol {
+    list-style-type: decimal;
+}
+
+.article-content li {
+    margin-top: 0.5rem;
+    padding-left: 0.25rem;
+}
+
+.article-content blockquote {
+    margin-top: 2rem;
+    padding: 1rem 1.25rem;
+    border-left: 3px solid var(--color-primary);
+    color: var(--color-text);
+    background-color: var(--color-surface);
+}
+
+.article-content code {
+    padding: 0.15rem 0.35rem;
+    border-radius: 0.25rem;
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    font-size: 0.9em;
+}
+
+.article-content pre {
+    margin-top: 2rem;
+    overflow-x: auto;
+    padding: 1.25rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    background-color: var(--color-surface);
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+.article-content pre code {
+    padding: 0;
+    background: transparent;
+}
+
+.article-content hr {
+    margin: 3rem 0;
+    border: 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.article-content img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 2.5rem auto;
+    border-radius: 0.75rem;
+}
+
+.article-content strong {
+    color: var(--color-text);
+    font-weight: 600;
+}

@@ -1,0 +1,158 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+---
+
+<MainLayout
+    title="Sobre mí"
+    description="Conoce a Carlos Daniel, desarrollador de software interesado en programación, desarrollo web, tecnología y aprendizaje continuo."
+>
+    <div class="space-y-24 py-16 sm:py-24">
+        <!-- Introducción -->
+        <section
+            class="grid gap-10 md:grid-cols-[1fr_2fr] md:gap-16"
+            aria-labelledby="about-title"
+        >
+            <div>
+                <p class="eyebrow">Sobre mí</p>
+            </div>
+
+            <div>
+                <h1
+                    id="about-title"
+                    class="text-main text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl"
+                >
+                    Soy Carlos Daniel.
+                </h1>
+
+                <p class="text-muted mt-7 max-w-2xl text-xl leading-8">
+                    Soy desarrollador de software y este espacio es una
+                    extensión de mi proceso de aprendizaje.
+                </p>
+
+                <p class="text-muted mt-5 max-w-2xl text-base leading-7">
+                    Me interesa entender cómo funcionan las cosas, construir
+                    soluciones y compartir lo que voy aprendiendo en el camino.
+                </p>
+            </div>
+        </section>
+
+        <!-- Mi enfoque -->
+        <section
+            class="border-y border-default py-16 sm:py-20"
+            aria-labelledby="approach-title"
+        >
+            <div class="grid gap-10 md:grid-cols-[1fr_2fr] md:gap-16">
+                <div>
+                    <p class="eyebrow">Mi enfoque</p>
+                </div>
+
+                <div>
+                    <h2
+                        id="approach-title"
+                        class="text-main text-3xl font-semibold tracking-tight sm:text-4xl"
+                    >
+                        Aprender haciendo.
+                    </h2>
+
+                    <p class="text-muted mt-5 max-w-2xl text-base leading-7">
+                        Gran parte de mi aprendizaje ocurre mientras intento
+                        resolver problemas reales, experimentar con nuevas
+                        herramientas y buscar mejores formas de hacer las cosas.
+                    </p>
+
+                    <p class="text-muted mt-4 max-w-2xl text-base leading-7">
+                        Este blog nace precisamente de ese proceso: escribir me
+                        ayuda a ordenar ideas, entender mejor los temas y
+                        convertir lo aprendido en algo que pueda compartir.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Temas -->
+        <section aria-labelledby="interests-title">
+            <div class="grid gap-10 md:grid-cols-[1fr_2fr] md:gap-16">
+                <div>
+                    <p class="eyebrow">Intereses</p>
+                </div>
+
+                <div>
+                    <h2
+                        id="interests-title"
+                        class="text-main text-3xl font-semibold tracking-tight sm:text-4xl"
+                    >
+                        Lo que me interesa explorar.
+                    </h2>
+
+                    <div class="mt-8 grid gap-4 sm:grid-cols-2">
+                        <article class="surface-card">
+                            <h3 class="text-main font-semibold">
+                                Programación
+                            </h3>
+
+                            <p class="text-muted mt-3 text-sm leading-6">
+                                Conceptos, herramientas y buenas prácticas para
+                                desarrollar software.
+                            </p>
+                        </article>
+
+                        <article class="surface-card">
+                            <h3 class="text-main font-semibold">
+                                Desarrollo web
+                            </h3>
+
+                            <p class="text-muted mt-3 text-sm leading-6">
+                                Tecnologías y experiencias relacionadas con la
+                                construcción de sitios y aplicaciones web.
+                            </p>
+                        </article>
+
+                        <article class="surface-card">
+                            <h3 class="text-main font-semibold">
+                                Tecnología
+                            </h3>
+
+                            <p class="text-muted mt-3 text-sm leading-6">
+                                Herramientas, tendencias e ideas que despiertan
+                                mi curiosidad.
+                            </p>
+                        </article>
+
+                        <article class="surface-card">
+                            <h3 class="text-main font-semibold">
+                                Aprendizaje
+                            </h3>
+
+                            <p class="text-muted mt-3 text-sm leading-6">
+                                Experiencias, reflexiones y lecciones que voy
+                                descubriendo durante mi crecimiento.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cierre -->
+        <section
+            class="border-t border-default pt-16 text-center sm:pt-20"
+        >
+            <p class="eyebrow">
+                Este espacio sigue creciendo
+            </p>
+
+            <h2
+                class="text-main mx-auto mt-4 max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl"
+            >
+                Si estás aquí, espero que encuentres algo que te resulte útil.
+            </h2>
+
+            <a
+                href="/blog"
+                class="button-primary mt-8 inline-flex"
+            >
+                Explorar artículos
+            </a>
+        </section>
+    </div>
+</MainLayout>

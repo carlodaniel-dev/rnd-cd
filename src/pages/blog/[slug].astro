@@ -2,28 +2,49 @@
 import { getCollection, render } from "astro:content";
 import MainLayout from "../../layouts/MainLayout.astro";
 import { siteConfig } from "../../config/site";
+import "../../styles/article.css";
 
 export async function getStaticPaths() {
     const posts = await getCollection("blog", ({ data }) => !data.draft);
 
-    return posts.map((post) => ({
+    const sortedPosts = posts.sort(
+        (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+    );
+
+    return sortedPosts.map((post, index) => ({
         params: {
             slug: post.id,
         },
         props: {
             post,
+            previousPost: sortedPosts[index + 1] ?? null,
+            nextPost: sortedPosts[index - 1] ?? null,
         },
     }));
 }
 
-const { post } = Astro.props;
+const { post, previousPost, nextPost } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<MainLayout title={post.data.title} description={post.data.description}>
-    <article class="mx-auto max-w-3xl py-16 sm:py-24">
+<MainLayout
+    title={post.data.title}
+    description={post.data.description}
+>
+    <article class="mx-auto max-w-3xl py-12 sm:py-20">
+
+        <!-- Volver al blog -->
+        <a
+            href="/blog"
+            class="inline-flex items-center gap-2 text-sm font-medium transition-opacity hover:opacity-70"
+            style="color: var(--color-primary);"
+        >
+            <span aria-hidden="true">←</span>
+            Volver al blog
+        </a>
+
         <!-- Cabecera -->
-        <header class="mb-12">
+        <header class="mt-12">
             <p
                 class="text-sm font-medium uppercase tracking-[0.15em]"
                 style="color: var(--color-primary);"
@@ -32,37 +53,119 @@ const { Content } = await render(post);
             </p>
 
             <h1
-                class="mt-4 text-4xl font-semibold leading-tight tracking-tight sm:text-5xl"
+                class="mt-4 text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl"
                 style="color: var(--color-text);"
             >
                 {post.data.title}
             </h1>
 
             <p
-                class="mt-5 text-lg leading-8"
+                class="mt-6 max-w-2xl text-lg leading-8 sm:text-xl"
                 style="color: var(--color-text-muted);"
             >
                 {post.data.description}
             </p>
 
             <div
-                class="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm"
+                class="mt-7 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm"
                 style="color: var(--color-text-muted);"
             >
                 <time datetime={post.data.pubDate.toISOString()}>
-                    {post.data.pubDate.toLocaleDateString(siteConfig.locale)}
+                    {post.data.pubDate.toLocaleDateString(
+                        siteConfig.locale,
+                        {
+                            day: "numeric",
+                            month: "long",
+                            year: "numeric",
+                        },
+                    )}
                 </time>
 
-                <span aria-hidden="true">·</span>
+                {
+                    post.data.tags.length > 0 && (
+                        <>
+                            <span aria-hidden="true">·</span>
 
-                <span>{post.data.tags.join(" · ")}</span>
+                            <div class="flex flex-wrap gap-2">
+                                {post.data.tags.map((tag) => (
+                                    <span>
+                                        #{tag}
+                                    </span>
+                                ))}
+                            </div>
+                        </>
+                    )
+                }
             </div>
         </header>
 
+        <!-- Separador -->
+        <div
+            class="my-12 border-t sm:my-16"
+            style="border-color: var(--color-border);"
+        ></div>
+
         <!-- Contenido -->
-        <div class="prose prose-slate max-w-none">
+        <div class="article-content">
             <Content />
         </div>
-        
+
+        <!-- Navegación -->
+        <nav
+            class="mt-16 grid gap-4 border-t pt-8 sm:mt-20 sm:grid-cols-2"
+            style="border-color: var(--color-border);"
+            aria-label="Navegación entre artículos"
+        >
+            {
+                previousPost ? (
+                    <a
+                        href={`/blog/${previousPost.id}`}
+                        class="group rounded-xl border p-5 transition-colors hover:bg-slate-100"
+                        style="border-color: var(--color-border);"
+                    >
+                        <span
+                            class="text-xs font-medium uppercase tracking-[0.12em]"
+                            style="color: var(--color-text-muted);"
+                        >
+                            Artículo anterior
+                        </span>
+
+                        <span
+                            class="mt-2 block text-base font-semibold transition-opacity group-hover:opacity-70"
+                            style="color: var(--color-text);"
+                        >
+                            ← {previousPost.data.title}
+                        </span>
+                    </a>
+                ) : (
+                    <div></div>
+                )
+            }
+
+            {
+                nextPost && (
+                    <a
+                        href={`/blog/${nextPost.id}`}
+                        class="group rounded-xl border p-5 text-left sm:text-right transition-colors hover:bg-slate-100"
+                        style="border-color: var(--color-border);"
+                    >
+                        <span
+                            class="text-xs font-medium uppercase tracking-[0.12em]"
+                            style="color: var(--color-text-muted);"
+                        >
+                            Siguiente artículo
+                        </span>
+
+                        <span
+                            class="mt-2 block text-base font-semibold transition-opacity group-hover:opacity-70"
+                            style="color: var(--color-text);"
+                        >
+                            {nextPost.data.title} →
+                        </span>
+                    </a>
+                )
+            }
+        </nav>
+
     </article>
 </MainLayout>
