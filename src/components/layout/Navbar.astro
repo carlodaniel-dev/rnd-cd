@@ -1,3 +1,4 @@
+
 ---
 import { siteConfig } from "../../config/site";
 
@@ -10,8 +11,11 @@ const navigation = [
 ---
 
 <header
-    class="sticky top-0 z-50 border-b"
-    style="border-color: var(--color-border); background-color: var(--color-surface);"
+    class="sticky top-0 z-50 border-b backdrop-blur-md"
+    style="
+        border-color: var(--color-border);
+        background-color: color-mix(in srgb, var(--color-surface) 85%, transparent);
+    "
 >
     <nav
         class="mx-auto flex min-h-16 max-w-6xl items-center justify-between px-6"
@@ -19,20 +23,19 @@ const navigation = [
     >
         <a
             href="/"
-            class="text-xl font-bold tracking-tight transition-colors"
+            class="text-xl font-bold tracking-tight transition-opacity hover:opacity-70"
             style="color: var(--color-text);"
         >
             {siteConfig.name}
         </a>
 
-        <!-- Menú escritorio -->
         <ul class="hidden items-center gap-6 text-sm font-medium md:flex">
             {
                 navigation.map((item) => (
                     <li>
                         <a
                             href={item.href}
-                            class="transition-colors hover:opacity-70"
+                            class="transition-opacity hover:opacity-70"
                             style="color: var(--color-text-muted);"
                         >
                             {item.name}
@@ -42,11 +45,10 @@ const navigation = [
             }
         </ul>
 
-        <!-- Botón menú móvil -->
         <button
             id="menu-button"
             type="button"
-            class="rounded-md p-2 md:hidden"
+            class="rounded-md p-2 transition-opacity hover:opacity-70 md:hidden"
             aria-label="Abrir menú"
             aria-expanded="false"
             aria-controls="mobile-menu"
@@ -69,11 +71,13 @@ const navigation = [
         </button>
     </nav>
 
-    <!-- Menú móvil -->
     <div
         id="mobile-menu"
         class="hidden border-t md:hidden"
-        style="border-color: var(--color-border); background-color: var(--color-surface);"
+        style="
+            border-color: var(--color-border);
+            background-color: var(--color-surface);
+        "
     >
         <ul class="mx-auto max-w-6xl px-6 py-4">
             {
